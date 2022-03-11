@@ -1,7 +1,9 @@
-name: chess_board
+name: chess_board_widget
 description: A chess board widget.
 
 version: 0.1.0+1
+
+repository: https://github.com/bedardjo/chess_board.git
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -21,3 +23,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/default_board/

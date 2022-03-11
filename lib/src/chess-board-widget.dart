@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:chess_board/src/possible-capture-drawer.dart';
+import 'package:chess_board_widget/src/possible-capture-drawer.dart';
 import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
