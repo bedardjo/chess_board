@@ -11,52 +11,64 @@ ChessBoardStyle defaultChessBoardStyle = ChessBoardStyle(
       switch (piece) {
         case ChessPiece.white_pawn:
           return Image(
-            image: AssetImage("assets/default_board/white_pawn.png"),
+            image: AssetImage("assets/default_board/white_pawn.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.white_bishop:
           return Image(
-            image: AssetImage("assets/default_board/white_bishop.png"),
+            image: AssetImage("assets/default_board/white_bishop.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.white_knight:
           return Image(
-            image: AssetImage("assets/default_board/white_knight.png"),
+            image: AssetImage("assets/default_board/white_knight.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.white_rook:
           return Image(
-            image: AssetImage("assets/default_board/white_rook.png"),
+            image: AssetImage("assets/default_board/white_rook.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.white_queen:
           return Image(
-            image: AssetImage("assets/default_board/white_queen.png"),
+            image: AssetImage("assets/default_board/white_queen.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.white_king:
           return Image(
-            image: AssetImage("assets/default_board/white_king.png"),
+            image: AssetImage("assets/default_board/white_king.png",
+                package: 'chess_board_widget'),
           );
 
         case ChessPiece.black_pawn:
           return Image(
-            image: AssetImage("assets/default_board/black_pawn.png"),
+            image: AssetImage("assets/default_board/black_pawn.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.black_bishop:
           return Image(
-            image: AssetImage("assets/default_board/black_bishop.png"),
+            image: AssetImage("assets/default_board/black_bishop.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.black_knight:
           return Image(
-            image: AssetImage("assets/default_board/black_knight.png"),
+            image: AssetImage("assets/default_board/black_knight.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.black_rook:
           return Image(
-            image: AssetImage("assets/default_board/black_rook.png"),
+            image: AssetImage("assets/default_board/black_rook.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.black_queen:
           return Image(
-            image: AssetImage("assets/default_board/black_queen.png"),
+            image: AssetImage("assets/default_board/black_queen.png",
+                package: 'chess_board_widget'),
           );
         case ChessPiece.black_king:
           return Image(
-            image: AssetImage("assets/default_board/black_king.png"),
+            image: AssetImage("assets/default_board/black_king.png",
+                package: 'chess_board_widget'),
           );
 
         case ChessPiece.none:
