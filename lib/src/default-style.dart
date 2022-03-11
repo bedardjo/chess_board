@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
 import 'chess-board-style.dart';
+import 'chess-square-rendering-details.dart';
 
-ChessBoardStyle defaultStyle = ChessBoardStyle(
+ChessBoardStyle defaultChessBoardStyle = ChessBoardStyle(
     getPieceWidget: (piece) {
       switch (piece) {
         case ChessPiece.white_pawn:

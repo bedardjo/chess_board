@@ -1,7 +1,7 @@
 name: chess_board_widget
 description: A chess board widget.
 
-version: 0.1.0+1
+version: 0.1.0+3
 
 repository: https://github.com/bedardjo/chess_board.git
 
