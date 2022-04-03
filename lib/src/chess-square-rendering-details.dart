@@ -4,4 +4,5 @@ enum ChessSquareRenderingDetails {
   last_move_end,
   possible_move,
   possible_capture,
+  king_in_check
 }

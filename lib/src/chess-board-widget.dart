@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:chess_board_widget/src/possible-capture-drawer.dart';
 import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
@@ -296,6 +295,14 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
       }
       renderingDetails.add(ChessSquareRenderingDetails.possible_move);
     }
+    ChessPiece piece = widget.state.board[c.y][c.x];
+    if (((widget.state.currentPlayer == Player.white &&
+                piece == ChessPiece.white_king) ||
+            ((widget.state.currentPlayer == Player.black &&
+                piece == ChessPiece.black_king))) &&
+        widget.state.check) {
+      renderingDetails.add(ChessSquareRenderingDetails.king_in_check);
+    }
     return renderingDetails;
   }
 
@@ -305,28 +312,20 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
       Point<int> coords,
       List<Widget> currentContents) {
     if (squareDetails.contains(ChessSquareRenderingDetails.possible_capture)) {
-      currentContents.add(Positioned.fill(
-          child: CustomPaint(
-        painter: PossibleCaptureDrawer(),
-      )));
+      currentContents.add(widget.style.getPossibleCaptureDecor(coords));
     } else if (squareDetails
         .contains(ChessSquareRenderingDetails.possible_move)) {
-      currentContents.add(Align(
-          alignment: Alignment.center,
-          child: FractionallySizedBox(
-              widthFactor: .25,
-              heightFactor: .25,
-              child: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black.withOpacity(.25))))));
+      currentContents.add(widget.style.getPossibleMoveDecor(coords));
+    } else if (squareDetails
+        .contains(ChessSquareRenderingDetails.king_in_check)) {
+      currentContents.add(widget.style.getKingInCheckDecor(coords));
     }
     if (style.showRankAndFileLabels) {
       bool isDark = (coords.y + coords.x) % 2 == 0;
       if ((widget.onTop == Player.black && coords.x == 0) ||
           (widget.onTop == Player.white && coords.x == 7)) {
         currentContents.add(Align(
-            alignment: Alignment(-.85, -.85),
+            alignment: const Alignment(-.85, -.85),
             child: Text(
               "12345678"[coords.y],
               style: isDark
@@ -337,7 +336,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
       if ((widget.onTop == Player.black && coords.y == 0) ||
           (widget.onTop == Player.white && coords.y == 7)) {
         currentContents.add(Align(
-          alignment: Alignment(.85, .85),
+          alignment: const Alignment(.85, .85),
           child: Text("abcdefgh"[coords.x],
               style: isDark
                   ? style.blackSquareTextStyle
@@ -351,7 +350,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
     setState(() {
       controller.reset();
       selectedMove = m;
-      controller.duration = Duration(milliseconds: 170);
+      controller.duration = const Duration(milliseconds: 170);
       animatedMoves.add(createAnimatedMove(selectedMove!, 0, 1.0));
       controller.forward(from: 0.0).then((value) {
         onSelectedMoveAnimationFinished();
@@ -392,7 +391,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
               mainAxisSize: MainAxisSize.min,
               children: moves
                   .map((move) => Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: ElevatedButton(
                           onPressed: () {
                             Navigator.pop(context, move);

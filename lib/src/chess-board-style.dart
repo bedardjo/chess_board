@@ -10,6 +10,9 @@ class ChessBoardStyle {
   final Widget Function(
           bool dark, Point<int>, Set<ChessSquareRenderingDetails> details)
       getSquareWidget;
+  final Widget Function(Point<int>) getPossibleCaptureDecor;
+  final Widget Function(Point<int>) getPossibleMoveDecor;
+  final Widget Function(Point<int>) getKingInCheckDecor;
   final TextStyle whiteSquareTextStyle;
   final TextStyle blackSquareTextStyle;
   final bool showRankAndFileLabels;
@@ -17,6 +20,9 @@ class ChessBoardStyle {
   ChessBoardStyle(
       {required this.getPieceWidget,
       required this.getSquareWidget,
+      required this.getPossibleCaptureDecor,
+      required this.getPossibleMoveDecor,
+      required this.getKingInCheckDecor,
       required this.whiteSquareTextStyle,
       required this.blackSquareTextStyle,
       required this.showRankAndFileLabels});
@@ -26,6 +32,9 @@ class ChessBoardStyle {
     Widget Function(
             bool dark, Point<int>, Set<ChessSquareRenderingDetails> details)?
         getSquareWidget,
+    Widget Function(Point<int>)? getPossibleCaptureDecor,
+    Widget Function(Point<int>)? getPossibleMoveDecor,
+    Widget Function(Point<int>)? getKingInCheckDecor,
     TextStyle? whiteSquareTextStyle,
     TextStyle? blackSquareTextStyle,
     bool? showRankAndFileLabels,
@@ -33,6 +42,10 @@ class ChessBoardStyle {
     return ChessBoardStyle(
         getPieceWidget: getPieceWidget ?? this.getPieceWidget,
         getSquareWidget: getSquareWidget ?? this.getSquareWidget,
+        getPossibleCaptureDecor:
+            getPossibleCaptureDecor ?? this.getPossibleCaptureDecor,
+        getPossibleMoveDecor: getPossibleMoveDecor ?? this.getPossibleMoveDecor,
+        getKingInCheckDecor: getKingInCheckDecor ?? this.getKingInCheckDecor,
         whiteSquareTextStyle: whiteSquareTextStyle ?? this.whiteSquareTextStyle,
         blackSquareTextStyle: blackSquareTextStyle ?? this.blackSquareTextStyle,
         showRankAndFileLabels:

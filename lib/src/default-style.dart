@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:chess_board_widget/src/check-decor-drawer.dart';
+import 'package:chess_board_widget/src/possible-capture-drawer.dart';
 import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
@@ -109,6 +111,23 @@ ChessBoardStyle defaultChessBoardStyle = ChessBoardStyle(
         );
       }
     },
+    getPossibleCaptureDecor: (coord) => Positioned.fill(
+            child: CustomPaint(
+          painter: PossibleCaptureDrawer(),
+        )),
+    getPossibleMoveDecor: (coord) => Align(
+        alignment: Alignment.center,
+        child: FractionallySizedBox(
+            widthFactor: .25,
+            heightFactor: .25,
+            child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black.withOpacity(.25))))),
+    getKingInCheckDecor: (coord) => Positioned.fill(
+            child: CustomPaint(
+          painter: CheckDecorDrawer(),
+        )),
     whiteSquareTextStyle: TextStyle(
         color: Color.fromARGB(255, 181, 136, 99),
         fontSize: 16,
