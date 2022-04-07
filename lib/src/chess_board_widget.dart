@@ -5,31 +5,36 @@ import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
 import 'arrow.dart';
-import 'chess-board-animation.dart';
-import 'chess-board-style.dart';
-import 'chess-square-rendering-details.dart';
-import 'decor-layer.dart';
+import 'chess_board_animation.dart';
+import 'chess_board_style.dart';
+import 'chess_square_rendering_details.dart';
+import 'decor_layer.dart';
+import 'default_style.dart';
 
 class ChessBoardWidget extends StatefulWidget {
   final Player onTop;
   final ChessGameState state;
-  final ChessBoardStyle style;
-  final List<ChessBoardAnimation> animations;
-  final List<Arrow> arrows;
+  late final ChessBoardStyle style;
+  late final List<ChessBoardAnimation> animations;
+  late final List<Arrow> arrows;
   final void Function(ChessMove)? onPlayMove;
   final void Function()? onAnimationsCompleted;
 
-  const ChessBoardWidget(
+  ChessBoardWidget(
       {Key? key,
       Player? onTop,
       required this.state,
-      required this.style,
-      required this.animations,
-      required this.arrows,
+      ChessBoardStyle? style,
+      List<ChessBoardAnimation>? animations,
+      List<Arrow>? arrows,
       required this.onPlayMove,
       this.onAnimationsCompleted})
-      : this.onTop = onTop ?? Player.black,
-        super(key: key);
+      : onTop = onTop ?? Player.black,
+        animations = animations ?? [],
+        arrows = arrows ?? [],
+        super(key: key) {
+    this.style = style ?? defaultChessBoardStyle;
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -77,8 +82,8 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
   }
 
   @override
-  void didUpdateWidget(ChessBoardWidget old) {
-    super.didUpdateWidget(old);
+  void didUpdateWidget(ChessBoardWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
     if (widget.animations.isNotEmpty) {
       int durationMS = widget.animations
           .fold(0, (maxEndMS, a) => a.endMS > maxEndMS ? a.endMS : maxEndMS);
@@ -215,7 +220,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
               opacity: 0.5,
               child: pieceWidget,
             ),
-            feedback: Container(
+            feedback: SizedBox(
               width: size,
               height: size,
               child: pieceWidget,
@@ -267,7 +272,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
               ))));
     }
 
-    return Container(
+    return SizedBox(
         width: size,
         height: size,
         child: Stack(
@@ -396,7 +401,7 @@ class ChessBoardWidgetState extends State<ChessBoardWidget>
                           onPressed: () {
                             Navigator.pop(context, move);
                           },
-                          child: Container(
+                          child: SizedBox(
                               width: 90,
                               child: widget.style
                                   .getPieceWidget(move.promotion)))))

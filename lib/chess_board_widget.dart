@@ -1,3 +1,3 @@
-export 'src/chess-board-widget.dart' show ChessBoardWidget;
-export 'src/chess-board-style.dart' show ChessBoardStyle;
-export 'src/default-style.dart' show defaultChessBoardStyle;
+export 'src/chess_board_widget.dart' show ChessBoardWidget;
+export 'src/chess_board_style.dart' show ChessBoardStyle;
+export 'src/default_style.dart' show defaultChessBoardStyle;

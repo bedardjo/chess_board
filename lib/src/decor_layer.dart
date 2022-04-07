@@ -19,7 +19,7 @@ class DecorLayerState extends State<DecorLayer> {
   }
 }
 
-Color _arrowColor = Color.fromARGB(255, 71, 104, 149);
+Color _arrowColor = const Color.fromARGB(255, 71, 104, 149);
 
 class DecorPainter extends CustomPainter {
   final List<Arrow> arrows;
@@ -47,10 +47,7 @@ class DecorPainter extends CustomPainter {
           end.dy - sin(arrowDirection) * arrowHeadWidth);
       arrowPaint.color = _arrowColor.withOpacity(arrow.opacity);
       arrowHeadPaint.color = _arrowColor.withOpacity(arrow.opacity);
-      // canvas.drawLine(
-      //     start,
-      //     end + Offset(cos(arrowDirection) * 3, sin(arrowDirection) * 3),
-      //     arrowPaint);
+
       Point<double> arrowLeft =
           Point(cos(arrowDirection + pi * .5), sin(arrowDirection + pi * .5));
       Point<double> arrowRight =
@@ -89,12 +86,7 @@ class DecorPainter extends CustomPainter {
             ..lineTo(start.dx + arrowRight.x * arrowWidth,
                 start.dy + arrowRight.y * arrowWidth),
           arrowHeadPaint);
-
-      // Point<double> arrowDirection =
-      //     Point(arrow.end.x - arrow.start.x, arrow.end.y - arrow.start.y);
     }
-    // canvas.drawRect(Rect.fromLTRB(.1, .1, size.width - .2, size.height - .2),
-    //     Paint()..color = Color.fromARGB(255, 180, 30, 180));
   }
 
   @override

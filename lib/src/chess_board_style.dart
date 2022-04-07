@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:chess_lib/chess_lib.dart';
 import 'package:flutter/material.dart';
 
-import 'chess-square-rendering-details.dart';
+import 'chess_square_rendering_details.dart';
 
 class ChessBoardStyle {
   final Widget Function(ChessPiece) getPieceWidget;
