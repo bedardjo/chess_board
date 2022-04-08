@@ -2,6 +2,8 @@
 
 This package is for drawing styled chess boards. Default styles are provided, which resemble lichess boards, but the style can also be easily overridden. For a better user experience, niceties are provided like piece movement animations and square decorations. This package uses the `chess_lib` package for handling the modelling of chess and its rules.
 
+![example](https://github.com/bedardjo/chess_board/raw/main/readme_resources/example.gif)
+
 ## Getting started
 
 To import:
